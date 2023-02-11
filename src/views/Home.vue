@@ -1,23 +1,34 @@
 <script lang="ts">
   
 import {ref } from "vue";
-import {usePokemonStore} from '../store/usePokemonStore'
+import {usePokemonStore, useEvoluitonPokemonStore} from '../store/usePokemonStore'
 
   export default {
     name: 'Home',
 
     setup(){
       const useGetDatas = usePokemonStore()
+      const useGetEvol = useEvoluitonPokemonStore()
       const pokemonInput = ref('')
       const pokemonData = ref()
+      const pokemonEvolutions = ref()
 
       async function handleSearch(){
         await useGetDatas.fetchPokemon(pokemonInput.value)
         pokemonData.value = useGetDatas.pokemonsDatas
-
+        
         console.log(pokemonData.value)
+
+        getEvolution(pokemonData.value.id)
+
+        
       }
       
+      async function getEvolution(id:number){
+        await useGetEvol.fetchEvolution(id).then(res =>{
+          return console.log(pokemonEvolutions.value = useGetEvol.pokemonEvolution)
+        })
+      }
       return{
         pokemonInput,
         handleSearch,

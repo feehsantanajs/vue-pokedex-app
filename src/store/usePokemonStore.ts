@@ -10,9 +10,7 @@ interface pokemonsDatasProps{
     }
   }]
 
-  forms:[{
-    url:string;
-  }]
+  id:number;
 }
 export const usePokemonStore = defineStore("pokemon",{
     state: () => {
@@ -32,6 +30,24 @@ export const usePokemonStore = defineStore("pokemon",{
         }
       }
     },
-   
-    
+})
+
+export const useEvoluitonPokemonStore = defineStore("pokemon-evolution",{
+  state: () => {
+    return {
+      pokemonEvolution:{}
+    }
+  },
+  actions: {
+    async fetchEvolution(id:number) {
+      try {
+        const datas = await api.get(`/${id}`)
+        this.pokemonEvolution = datas.data
+      }
+      catch (error) {
+        alert(error)
+        console.log(error)
+      }
+    }
+  },
 })

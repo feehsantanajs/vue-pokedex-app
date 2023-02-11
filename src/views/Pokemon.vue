@@ -1,29 +1,25 @@
 <script lang="ts">
 import { ref,computed } from 'vue';
 import { usePokemonStore } from '../store/usePokemonStore';
+import Evolution from '../components/Evolution/index.vue'
+import Stats from '../components/Stats/index.vue'
 
 export default{
     name: 'Pokemon',
-    
+    components:{
+      Stats,
+      Evolution,
+    },
     setup(){
       const useGetDatas = usePokemonStore()
       const datasPokemon = ref()
       const data = computed(() =>{
         return datasPokemon.value = useGetDatas.pokemonsDatas
       })
-      const cor = 'green'
-      function handleTypeColor(){
       
-        if(data.value.types[0].type.name){
-          return 'green'
-        }
-        return 'red'
-      }
       return{
         data,
         datasPokemon,
-        handleTypeColor,
-        cor
         
       }
     }
@@ -40,6 +36,8 @@ export default{
       >
       <span class="text-gray-300 mt-10 text-4xl font-bold">{{data.name.charAt(0).toUpperCase() + data.name.slice(1)}}</span>
       <span class="text-blue-900">{{data.types[0].type.name}}</span>
+      
+      
     </div>
    
   </div>
