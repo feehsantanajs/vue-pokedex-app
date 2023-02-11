@@ -4,6 +4,15 @@ import { api } from '../services/api'
 
 interface pokemonsDatasProps{
   name: string;
+  types: [{
+    type:{
+      name:string;
+    }
+  }]
+
+  forms:[{
+    url:string;
+  }]
 }
 export const usePokemonStore = defineStore("pokemon",{
     state: () => {
