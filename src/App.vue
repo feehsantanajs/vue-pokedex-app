@@ -3,7 +3,7 @@
 
 <template>
  
-  <main class="flex flex-col items-center p-10 bg-gray-900 h-screen w-screen ">
+  <main class="flex flex-col items-center pt-10 bg-gray-900 h-screen w-screen ">
     
       <div class="w-96 text-center">
         <router-link to="/">Home</router-link> | 
