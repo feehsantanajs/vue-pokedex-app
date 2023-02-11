@@ -1,7 +1,6 @@
 <script lang="ts">
-import { ref,onMounted,computed } from 'vue';
+import { ref,computed } from 'vue';
 import { usePokemonStore } from '../store/usePokemonStore';
-
 
 export default{
     name: 'Pokemon',
@@ -38,7 +37,6 @@ export default{
         :src="'https://img.pokemondb.net/artwork/large/'+data.name+'.jpg'" 
         alt="name pokemon" 
         class="w-52"
-      
       >
       <span class="text-gray-300 mt-10 text-4xl font-bold">{{data.name.charAt(0).toUpperCase() + data.name.slice(1)}}</span>
       <span class="text-blue-900">{{data.types[0].type.name}}</span>
